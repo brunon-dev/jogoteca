@@ -17,5 +17,9 @@ def ola():
     lista = [jogo1, jogo2, jogo3]
     return render_template('lista.html', titulo = "Lista de Jogos", jogos = lista)
 
+@app.route('/novo')
+def novo():
+    return render_template('novo.html', titulo = 'Novo jogo')
+
 # não colocar essas configurações em produção
 app.run(host='127.0.0.1', port=8080)
