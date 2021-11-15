@@ -1,9 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/inicio')
 def ola():
-    return '<h1>Olá mundo Flask!</h1>'
+    lista = {'Tetris', 'Super Mario', 'Pokemon Gold'}
+    return render_template('lista.html', titulo = "Lista de Jogos", jogos = lista)
 
-app.run()
+# não colocar essas configurações em produção
+app.run(host='127.0.0.1', port=8080)
