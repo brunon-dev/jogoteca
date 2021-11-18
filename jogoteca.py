@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -14,7 +14,7 @@ jogo3 = Jogo('Tetris', 'Desafio', 'PC')
 lista = [jogo1, jogo2, jogo3]
 
 @app.route('/')
-def ola():
+def index():
     return render_template('lista.html', titulo = "Lista de Jogos", jogos = lista)
 
 @app.route('/novo')
@@ -28,7 +28,7 @@ def criar():
     console = request.form['console']
     jogo = Jogo(nome, categoria, console)
     lista.append(jogo)
-    return render_template('lista.html', titulo = 'Lista de Jogos', jogos = lista)
+    return redirect("/")
 
 # não colocar essas configurações em produção
 app.run(host='127.0.0.1', port=8080, debug=True)
