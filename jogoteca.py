@@ -45,5 +45,11 @@ def autenticar():
         flash('Login não realizado! Tente novamente!')
         return redirect('/login')
 
+@app.route('/logout')
+def logout():
+    session['usuario_logado'] = None
+    flash('Nenhum usuário logado!')
+    return redirect('/')
+
 # não colocar essas configurações em produção
 app.run(host='127.0.0.1', port=8080, debug=True)
