@@ -18,10 +18,10 @@
             {% endif %}
         {% endwith %}
         <h1>Faça seu login</h1>
-        <form method="POST" action="/autenticar">
+        <form method="POST" action="{{ url_for('autenticar') }}">
             <p><label>Nome de usuário:</label> <input class="form-control" type="text" name="usuario" required></p>
             <p><label>Senha:</label> <input class="form-control" type="password" name="senha" required></p>
-            <input type="hidden" name="proxima" value="{{ proxima or '/' }}">
+            <input type="hidden" name="proxima" value="{{ proxima or url_for('index') }}">
             <p><button class="btn btn-primary" type="submit">Entrar</button></p>
         </form>
     </div>
